@@ -1,11 +1,9 @@
-import './App.css';
-
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h1>React App</h1>
+    <div>
+      <h1 className="text-3xl font-bold underline">App Login App</h1>
     </div>
   );
-}
+};
 
 export default App;
