@@ -19,3 +19,12 @@ Content-Type: application/json
 
 ###
 GET http://localhost:8080/api/user/rezuan
+
+###
+PUT http://localhost:8080/api/updateuser?id=6541c015f23ab83fd225ac99
+Content-Type: application/json
+
+{
+    "email": "ahmed@gmail.com",
+    "profile": "base64"
+}

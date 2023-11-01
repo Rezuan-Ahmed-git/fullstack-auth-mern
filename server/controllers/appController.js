@@ -190,8 +190,29 @@ export async function getUser(req, res, next) {
     profile: ''
 }
 */
-export async function updateUser(req, res) {
-  res.json('updateUser route');
+export async function updateUser(req, res, next) {
+  try {
+    const id = req.query.id;
+
+    if (!id) return res.status(404).send({ msg: 'Id not found' });
+
+    const body = req.body;
+
+    const user = await UserModel.findById(id);
+    if (!user) return res.status(404).send({ error: 'User Not Found' });
+
+    const updatedUser = await UserModel.findOneAndUpdate(
+      { id: user._id },
+      body,
+      {
+        new: true,
+      }
+    );
+
+    res.status(201).send({ msg: 'Updated Successfully', updatedUser });
+  } catch (error) {
+    next(error);
+  }
 }
 
 /** GET: http://localhost:8080/api/generateOTP */
