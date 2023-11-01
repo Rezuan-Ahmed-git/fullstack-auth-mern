@@ -165,8 +165,19 @@ export async function login(req, res, next) {
 }
 
 /** GET: http://localhost:8080/api/user/example123 */
-export async function getUser(req, res) {
-  res.json('getUser route');
+export async function getUser(req, res, next) {
+  const { username } = req.params;
+
+  try {
+    if (!username) return res.status(501).send({ error: 'Invalid Username' });
+
+    const user = await UserModel.findOne({ username }).select('-password');
+    if (!user) return res.status(404).send({ error: 'User not found!' });
+
+    res.status(200).send({ user });
+  } catch (error) {
+    next(error);
+  }
 }
 
 /** PUT: http://localhost:8080/api/updateuser

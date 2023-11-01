@@ -16,3 +16,6 @@ Content-Type: application/json
     "username": "rezuan",
     "password": "1234"
 }
+
+###
+GET http://localhost:8080/api/user/rezuan
