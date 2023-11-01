@@ -14,7 +14,7 @@ Content-Type: application/json
 
 {
     "username": "rezuan",
-    "password": "1234"
+    "password": "12345"
 }
 
 ###
@@ -34,6 +34,14 @@ Content-Type: application/json
 ###
 GET http://localhost:8080/api/generateOTP?username=rezuan
 ###
-GET http://localhost:8080/api/verifyOTP?username=rezuan&code=955324
+GET http://localhost:8080/api/verifyOTP?username=rezuan&code=655875
 ###
 GET http://localhost:8080/api/createResetSession?username=rezuan&code=955324
+###
+PUT http://localhost:8080/api/resetPassword
+Content-Type: application/json
+
+{
+    "username": "rezuan",
+    "password": "12345"
+}
