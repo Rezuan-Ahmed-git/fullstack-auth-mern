@@ -30,3 +30,10 @@ Content-Type: application/json
     "email": "ahmed@gmail.com",
     "profile": "base64"
 }
+
+###
+GET http://localhost:8080/api/generateOTP?username=rezuan
+###
+GET http://localhost:8080/api/verifyOTP?username=rezuan&code=955324
+###
+GET http://localhost:8080/api/createResetSession?username=rezuan&code=955324
