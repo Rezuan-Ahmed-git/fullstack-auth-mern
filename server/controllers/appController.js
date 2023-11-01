@@ -192,13 +192,13 @@ export async function getUser(req, res, next) {
 */
 export async function updateUser(req, res, next) {
   try {
-    const id = req.query.id;
+    const { userId } = req.user;
 
-    if (!id) return res.status(404).send({ msg: 'Id not found' });
+    if (!userId) return res.status(404).send({ msg: 'User not found' });
 
     const body = req.body;
 
-    const user = await UserModel.findById(id);
+    const user = await UserModel.findById(userId);
     if (!user) return res.status(404).send({ error: 'User Not Found' });
 
     const updatedUser = await UserModel.findOneAndUpdate(

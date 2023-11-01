@@ -21,7 +21,9 @@ Content-Type: application/json
 GET http://localhost:8080/api/user/rezuan
 
 ###
-PUT http://localhost:8080/api/updateuser?id=6541c015f23ab83fd225ac99
+PUT http://localhost:8080/api/updateuser
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMDVhZTZjM2Y4OTk2NDQzYzQ3MzQiLCJ1c2VybmFtZSI6InJlenVhbiIsImlhdCI6MTY5ODgyNTY1MCwiZXhwIjoxNjk4ODI5MjUwfQ.NKcMu0AJGZbGAo1rfB4AW48oFP8O2i5FiJRyT1IsaXs
+
 Content-Type: application/json
 
 {
