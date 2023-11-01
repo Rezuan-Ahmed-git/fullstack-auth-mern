@@ -1,5 +1,7 @@
 import UserModel from '../model/User.model.js';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import ENV from '../config.js';
 
 /** POST: http://localhost:8080/api/register
  *
@@ -91,6 +93,7 @@ export async function register(req, res, next) {
       return res.status(400).json({ msg: 'Bad Request! User already exist' });
     }
 
+    // hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = new UserModel({
@@ -116,8 +119,34 @@ export async function register(req, res, next) {
   "password": "admin1234"
   }
  */
-export async function login(req, res) {
-  res.json('login route');
+export async function login(req, res, next) {
+  const { username, password } = req.body;
+
+  try {
+    const user = await UserModel.findOne({ username });
+    if (!user) return res.status(404).json({ error: 'User Not Found!' });
+
+    const isMatchedPassword = await bcrypt.compare(password, user.password);
+    if (!isMatchedPassword)
+      return res.status(400).json({ error: 'Invalid Input' });
+
+    const token = jwt.sign(
+      {
+        userId: user._id,
+        username: user.username,
+      },
+      ENV.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+
+    res.status(200).send({
+      msg: 'Login Successfully..!',
+      username: user.username,
+      token,
+    });
+  } catch (error) {
+    next(error);
+  }
 }
 
 /** GET: http://localhost:8080/api/user/example123 */

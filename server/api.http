@@ -1,4 +1,3 @@
-
 POST http://localhost:8080/api/register
 Content-Type: application/json
 
@@ -7,4 +6,13 @@ Content-Type: application/json
     "password": "1234",
     "email": "rezuan@gmail.com",
     "profile": ""
+}
+
+###
+POST http://localhost:8080/api/login
+Content-Type: application/json
+
+{
+    "username": "rezuan",
+    "password": "1234"
 }
