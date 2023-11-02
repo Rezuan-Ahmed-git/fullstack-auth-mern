@@ -1,0 +1,47 @@
+POST http://localhost:8080/api/register
+Content-Type: application/json
+
+{
+    "username": "rezuan",
+    "password": "1234",
+    "email": "rezuan@gmail.com",
+    "profile": ""
+}
+
+###
+POST http://localhost:8080/api/login
+Content-Type: application/json
+
+{
+    "username": "rezuan",
+    "password": "12345"
+}
+
+###
+GET http://localhost:8080/api/user/rezuan
+
+###
+PUT http://localhost:8080/api/updateuser
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMDVhZTZjM2Y4OTk2NDQzYzQ3MzQiLCJ1c2VybmFtZSI6InJlenVhbiIsImlhdCI6MTY5ODgyNTY1MCwiZXhwIjoxNjk4ODI5MjUwfQ.NKcMu0AJGZbGAo1rfB4AW48oFP8O2i5FiJRyT1IsaXs
+
+Content-Type: application/json
+
+{
+    "email": "ahmed@gmail.com",
+    "profile": "base64"
+}
+
+###
+GET http://localhost:8080/api/generateOTP?username=rezuan
+###
+GET http://localhost:8080/api/verifyOTP?username=rezuan&code=655875
+###
+GET http://localhost:8080/api/createResetSession?username=rezuan&code=955324
+###
+PUT http://localhost:8080/api/resetPassword
+Content-Type: application/json
+
+{
+    "username": "rezuan",
+    "password": "12345"
+}

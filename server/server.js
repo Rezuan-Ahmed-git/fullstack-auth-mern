@@ -3,6 +3,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 
 import connect from './database/connection.js';
+import router from './router/route.js';
 
 const app = express();
 
@@ -15,6 +16,20 @@ const port = 8080;
 /** HTTP GET Request */
 app.get('/', (req, res) => {
   res.status(200).json('Home GET Request');
+});
+
+/** api routes */
+app.use('/api', router);
+
+/** Handle error globally */
+app.use((err, _req, res, next) => {
+  console.log(err);
+
+  //format error
+  res.status(err.status || 500).json({
+    message: err.message,
+    errors: err.errors,
+  });
 });
 
 /** start server only when we have valid connection */
