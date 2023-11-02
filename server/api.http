@@ -45,3 +45,15 @@ Content-Type: application/json
     "username": "rezuan",
     "password": "12345"
 }
+
+
+###
+POST http://localhost:8080/api/registerMail
+Content-Type: application/json
+
+{
+"username": "rezuan",
+  "userEmail": "admin1234@gmail.com",
+  "text": "Testing Mail",
+  "subject": "Backend Mail Request"
+}
