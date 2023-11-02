@@ -183,7 +183,7 @@ export async function getUser(req, res, next) {
 
 /** PUT: http://localhost:8080/api/updateuser
  * @param: {
-    "id": "<userId>"
+    "header": "token"
 }
   body: {
     firstName: '',
