@@ -1,7 +1,7 @@
-/* eslint-disable no-undef */
 import axios from 'axios';
 
-axios.defaults.baseURL = process.env.REACT_APP_SERVER_DOMAIN;
+axios.defaults.baseURL =
+  import.meta.env.REACT_APP_SERVER_DOMAIN || 'http://localhost:8080';
 
 /** Make API Requests */
 
